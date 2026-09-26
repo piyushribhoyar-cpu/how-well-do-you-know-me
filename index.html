@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>How Well Do You Know Me? V2 💗</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ffe6ef, #fff5f8);
+    color: #6b1638;
+    min-height: 100vh;
+}
+
+/* ================= INTRO PAGE ================= */
+
+.intro-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.intro-card {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    border-radius: 30px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(155, 25, 75, 0.18);
+}
+
+.intro-card h1 {
+    color: #a71950;
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.intro-card p {
+    color: #9b4165;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* ================= VIDEO ================= */
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 10px auto 20px;
+}
+
+.hamster-video {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 22px;
+    background: #ffd6e5;
+    display: block;
+}
+
+.sound-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+
+    border: none;
+    background: rgba(255, 255, 255, 0.92);
+    color: #c2185b;
+
+    padding: 10px 16px;
+    border-radius: 25px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+    transition: 0.25s;
+}
+
+.sound-btn:hover {
+    transform: scale(1.05);
+    background: white;
+}
+
+.continue-btn,
+.submit-btn {
+    border: none;
+    background: #c2185b;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 7px 18px rgba(194, 24, 91, 0.25);
+}
+
+.continue-btn:hover,
+.submit-btn:hover {
+    background: #a3154d;
+    transform: translateY(-3px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ================= QUIZ PAGE ================= */
+
+.quiz-page {
+    display: none;
+    min-height: 100vh;
+    padding: 35px 20px;
+}
+
+.quiz-container {
+    max-width: 850px;
+    margin: auto;
+}
+
+.quiz-header {
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(155, 25, 75, 0.12);
+}
+
+.quiz-header h1 {
+    color: #a71950;
+    font-size: 32px;
+}
+
+.quiz-header p {
+    margin-top: 8px;
+    color: #9b4165;
+}
+
+.question-card {
+    background: white;
+    border-radius: 22px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(155, 25, 75, 0.10);
+}
+
+.question-card h2 {
+    font-size: 19px;
+    margin-bottom: 18px;
+    color: #77143d;
+}
+
+.option {
+    display: block;
+    margin: 11px 0;
+    padding: 14px 17px;
+    border: 2px solid #f4bfd2;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.25s;
+    color: #762044;
+    background: #fffafd;
+}
+
+.option:hover {
+    background: #ffe6ef;
+    border-color: #d64c7d;
+    transform: translateX(4px);
+}
+
+.option input {
+    margin-right: 10px;
+    accent-color: #c2185b;
+}
+
+textarea {
+    width: 100%;
+    min-height: 130px;
+    resize: vertical;
+    border: 2px solid #f4bfd2;
+    border-radius: 15px;
+    padding: 15px;
+    outline: none;
+    color: #6b1638;
+    font-size: 15px;
+}
+
+textarea:focus {
+    border-color: #c2185b;
+}
+
+.submit-area {
+    text-align: center;
+    padding: 20px 0 50px;
+}
+
+/* ================= RESULT PAGE ================= */
+
+.result-page {
+    display: none;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.result-card {
+    background: white;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    padding: 45px 30px;
+    border-radius: 30px;
+    box-shadow: 0 15px 45px rgba(155, 25, 75, 0.18);
+}
+
+.result-card h1 {
+    color: #c2185b;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.score {
+    font-size: 45px;
+    font-weight: bold;
+    color: #a71950;
+    margin: 15px 0;
+}
+
+.message {
+    color: #7d3150;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.heart {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .intro-card h1,
+    .quiz-header h1 {
+        font-size: 27px;
+    }
+
+    .question-card {
+        padding: 20px;
+    }
+
+    .hamster-video {
+        height: 240px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     INTRO PAGE
+     ===================================================== -->
+
+<section class="intro-page" id="introPage">
+
+    <div class="intro-card">
+
+        <h1>
+            How Well Do You Know Me? V2💗
+        </h1>
+
+        <p>
+            • The difficulty has officially increased 😈
+        </p>
+
+
+        <!-- HAMSTER VIDEO -->
+
+        <div class="video-wrapper">
+
+            <video
+                class="hamster-video"
+                id="hamsterVideo"
+                src="hamster_V1.mp4"
+                autoplay
+                loop
+                playsinline
+                preload="auto">
+            </video>
+
+
+            <!-- ONLY MUTE / UNMUTE BUTTON -->
+
+            <button
+                type="button"
+                class="sound-btn"
+                id="soundBtn"
+                onclick="toggleSound()">
+
+                🔊 Mute
+
+            </button>
+
+        </div>
+
+
+        <h2 style="color:#c2185b; margin-bottom:8px;">
+
+            All the best Ahoo!!🐹💕
+
+        </h2>
+
+
+        <p>
+
+            Let's see how well you actually know me Krushna...
+            👀
+
+        </p>
+
+
+        <button
+            class="continue-btn"
+            onclick="startQuiz()">
+
+            Start Quiz💗
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUIZ PAGE
+     ===================================================== -->
+
+<section
+    class="quiz-page"
+    id="quizPage">
+
+    <div class="quiz-container">
+
+
+        <div class="quiz-header">
+
+            <h1>
+                How Well Do You Know Me? 💕
+            </h1>
+
+            <p>
+                Think carefully... I'm watching 👀
+            </p>
+
+        </div>
+
+
+        <!-- ================= QUESTION 1 ================= -->
+
+        <div class="question-card">
+
+            <h2>
+                1. What kind of apology actually works on me?
+            </h2>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q1"
+                    value="A">
+
+                A) “Sorry baby”
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q1"
+                    value="B">
+
+                B) Explaining what happened
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q1"
+                    value="C">
+
+                C) Saying sorry + actually changing it
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q1"
+                    value="D">
+
+                D) Making me laugh until I forget what I was mad about
+
+            </label>
+
+        </div>
+
+
+
+        <!-- ================= QUESTION 2 ================= -->
+
+        <div class="question-card">
+
+            <h2>
+                2. What was one of the first things I told you that you probably should remember?
+            </h2>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q2"
+                    value="A">
+
+                A) My favourite thing
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q2"
+                    value="B">
+
+                B) Something about my personality
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q2"
+                    value="C">
+
+                C) Something embarrassing
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q2"
+                    value="D">
+
+                D) Something i asked you to
+
+            </label>
+
+        </div>
+
+
+
+        <!-- ================= QUESTION 3 ================= -->
+
+        <div class="question-card">
+
+            <h2>
+                3. If I’m teasing you while I’m angry, what does that usually mean?
+            </h2>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="A">
+
+                A) I’m completely over it
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="B">
+
+                B) I’m still annoyed but don’t want to be too serious
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="C">
+
+                C) I’m actually happy
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="D">
+
+                D) I want you to stop talking
+
+            </label>
+
+        </div>
+
+
+
+        <!-- ================= QUESTION 4 ================= -->
+
+        <div class="question-card">
+
+            <h2>
+                4. What would I prefer during a bad day?
+            </h2>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q4"
+                    value="A">
+
+                A) A long call
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q4"
+                    value="B">
+
+                B) A few comforting texts
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q4"
+                    value="C">
+
+                C) A surprise video call
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q4"
+                    value="D">
+
+                D) You simply staying available for me
+
+            </label>
+
+        </div>
+
+
+
+        <!-- ================= QUESTION 5 ================= -->
+
+        <div class="question-card">
+
+            <h2>
+                5. What I hate the most?
+            </h2>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="A">
+
+                A) Female friends of urs
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="B">
+
+                B) Clean shave
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="C">
+
+                C) You teasing me
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q5"
+                    value="D">
+
+                D) All of these
+
+            </label>
+
+        </div>
+
+
+
+        <!-- ================= QUESTION 6 ================= -->
+
+        <div class="question-card">
+
+            <h2>
+                6. When I’m missing you but don’t directly say it, what am I MOST likely to do?
+            </h2>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q6"
+                    value="A">
+
+                A) Ask what you’re doing
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q6"
+                    value="B">
+
+                B) Send you something random
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q6"
+                    value="C">
+
+                C) Start teasing you
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q6"
+                    value="D">
+
+                D) Suddenly call you
+
+            </label>
+
+        </div>
+
+
+
+        <!-- ================= QUESTION 7 ================= -->
+
+        <div class="question-card">
+
+            <h2>
+                7. If you had to identify one thing that can change my mood instantly during a conversation, what would it be?
+            </h2>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q7"
+                    value="A">
+
+                A) Your tone
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q7"
+                    value="B">
+
+                B) How quickly you reply
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q7"
+                    value="C">
+
+                C) The words you use to refer me
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q7"
+                    value="D">
+
+                D) Whether you seem genuinely interested
+
+            </label>
+
+        </div>
+
+
+
+        <!-- ================= QUESTION 8 ================= -->
+
+        <div class="question-card">
+
+            <h2>
+                8. If I’m having a bad day and we can’t meet, what would I secretly want from you the most?
+            </h2>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q8"
+                    value="A">
+
+                A) You keep texting me
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q8"
+                    value="B">
+
+                B) You call me without me asking
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q8"
+                    value="C">
+
+                C) You make me laugh
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q8"
+                    value="D">
+
+                D) You simply stay available
+
+            </label>
+
+        </div>
+
+
+
+        <!-- ================= QUESTION 9 ================= -->
+
+        <div class="question-card">
+
+            <h2>
+                9. What do I usually do when I can't decide what I want?
+            </h2>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q9"
+                    value="A">
+
+                A) Would let you choose for us
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q9"
+                    value="B">
+
+                B) Pick randomly anything
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q9"
+                    value="C">
+
+                C) Keep changing my mind
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q9"
+                    value="D">
+
+                D) Say “you decide” and then disagree with u n choose my own atlast.
+
+            </label>
+
+        </div>
+
+
+
+        <!-- ================= QUESTION 10 ================= -->
+
+        <div class="question-card">
+
+            <h2>
+                10. What is the hardest part of knowing me through long distance? 💭
+            </h2>
+
+            <textarea
+                id="q10"
+                placeholder="Write your answer here... I want to know what YOU think 💌"></textarea>
+
+        </div>
+
+
+
+        <div class="submit-area">
+
+            <button
+                class="submit-btn"
+                onclick="submitQuiz()">
+
+                Submit My Answers 💗
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RESULT PAGE
+     ===================================================== -->
+
+<section
+    class="result-page"
+    id="resultPage">
+
+    <div class="result-card">
+
+        <div class="heart">
+            💗
+        </div>
+
+        <h1>
+            Quiz Complete!
+        </h1>
+
+        <div
+            class="score"
+            id="scoreText">
+
+            0 / 9
+
+        </div>
+
+        <p
+            class="message"
+            id="resultMessage">
+
+            Loading...
+
+        </p>
+
+        <p style="color:#c2185b; font-weight:bold;">
+
+            And yes... I will be judging your answers 👀💕
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+/* =====================================================
+   GOOGLE SHEETS WEB APP URL
+   ===================================================== */
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycby5jeEO5ZhKvlbeKbbbhulicvgtCy_R90E4MNg6OTMA8lm_IlWLrUw-NPOpSPGtIaFKPg/exec";
+
+
+/* =====================================================
+   CORRECT ANSWERS
+   ===================================================== */
+
+const correctAnswers = {
+
+    q1: "D",
+    q2: "D",
+    q3: "B",
+    q4: "B",
+    q5: "B",
+    q6: "B",
+    q7: "C",
+    q8: "D",
+    q9: "D"
+
+};
+
+
+/* =====================================================
+   VIDEO
+   ===================================================== */
+
+const video =
+document.getElementById("hamsterVideo");
+
+const soundBtn =
+document.getElementById("soundBtn");
+
+
+window.addEventListener("load", function () {
+
+    video.muted = false;
+    video.volume = 1.0;
+
+    video.play()
+
+    .then(function () {
+
+        soundBtn.innerHTML = "🔊 Mute";
+
+    })
+
+    .catch(function () {
+
+        /*
+        Browsers may block autoplay with sound.
+        In that case the video starts muted.
+        */
+
+        video.muted = true;
+
+        soundBtn.innerHTML = "🔇 Unmute";
+
+    });
+
+});
+
+
+/* =====================================================
+   MUTE / UNMUTE
+   ===================================================== */
+
+function toggleSound() {
+
+    if (video.muted) {
+
+        video.muted = false;
+
+        video.volume = 1.0;
+
+        soundBtn.innerHTML = "🔊 Mute";
+
+        video.play().catch(function () {});
+
+    }
+
+    else {
+
+        video.muted = true;
+
+        soundBtn.innerHTML = "🔇 Unmute";
+
+    }
+
+}
+
+
+/* =====================================================
+   START QUIZ
+   ===================================================== */
+
+function startQuiz() {
+
+    video.pause();
+
+    document.getElementById("introPage").style.display =
+    "none";
+
+    document.getElementById("quizPage").style.display =
+    "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   SUBMIT QUIZ
+   ===================================================== */
+
+function submitQuiz() {
+
+    let score = 0;
+
+    let answered = 0;
+
+    const answers = {};
+
+
+    /* ================= Q1 - Q9 ================= */
+
+    for (let i = 1; i <= 9; i++) {
+
+        const selected =
+        document.querySelector(
+            'input[name="q' + i + '"]:checked'
+        );
+
+
+        if (selected) {
+
+            answered++;
+
+            answers["q" + i] =
+            selected.value;
+
+
+            if (
+                selected.value ===
+                correctAnswers["q" + i]
+            ) {
+
+                score++;
+
+            }
+
+        }
+
+        else {
+
+            answers["q" + i] = "";
+
+        }
+
+    }
+
+
+    /* ================= Q10 ================= */
+
+    const q10 =
+    document.getElementById("q10").value.trim();
+
+    answers.q10 = q10;
+
+
+    /* ================= CHECK ALL ================= */
+
+    if (
+        answered < 9 ||
+        q10 === ""
+    ) {
+
+        alert(
+            "You haven't answered everything yet! 💗\n\n" +
+            "Please answer all 10 questions."
+        );
+
+        return;
+
+    }
+
+
+    /* ================= DISABLE BUTTON ================= */
+
+    const submitButton =
+    document.querySelector(".submit-btn");
+
+    submitButton.disabled = true;
+
+    submitButton.innerText =
+    "Saving your answers... 💗";
+
+
+    /* =====================================================
+       SEND ANSWERS TO GOOGLE SHEETS
+       ===================================================== */
+
+    fetch(
+        GOOGLE_SCRIPT_URL,
+        {
+
+            method: "POST",
+
+            mode: "no-cors",
+
+            headers: {
+
+                "Content-Type":
+                "text/plain;charset=utf-8"
+
+            },
+
+            body: JSON.stringify({
+
+                q1: answers.q1,
+                q2: answers.q2,
+                q3: answers.q3,
+                q4: answers.q4,
+                q5: answers.q5,
+                q6: answers.q6,
+                q7: answers.q7,
+                q8: answers.q8,
+                q9: answers.q9,
+                q10: answers.q10
+
+            })
+
+        }
+    )
+
+    .then(function () {
+
+        showResult(score);
+
+    })
+
+    .catch(function (error) {
+
+        console.error(
+            "Google Sheets error:",
+            error
+        );
+
+        alert(
+            "There was a problem saving the answers.\n\n" +
+            "Your score will still be displayed."
+        );
+
+        showResult(score);
+
+    });
+
+}
+
+
+/* =====================================================
+   SHOW RESULT
+   ===================================================== */
+
+function showResult(score) {
+
+    document.getElementById("quizPage").style.display =
+    "none";
+
+    document.getElementById("resultPage").style.display =
+    "flex";
+
+
+    document.getElementById("scoreText").innerText =
+    score + " / 9";
+
+
+    let message = "";
+
+
+    if (score === 9) {
+
+        message =
+        "EXCUSE ME??? 😭💗 You actually know me TOO well. " +
+        "I might have to admit you're the real expert on me.";
+
+    }
+
+    else if (score >= 7) {
+
+        message =
+        "Okayyy 👀💕 You know me pretty well! " +
+        "I’m impressed... but there are still a few things " +
+        "you clearly need to learn.";
+
+    }
+
+    else if (score >= 5) {
+
+        message =
+        "Hmmmm... interesting 😭 You know me, " +
+        "but apparently I still have some secrets left.";
+
+    }
+
+    else if (score >= 3) {
+
+        message =
+        "BABY 😭 We need to have a serious conversation " +
+        "about how well you know me.";
+
+    }
+
+    else {
+
+        message =
+        "I'm actually speechless 😭💀 " +
+        "You better start paying attention to me.";
+
+    }
+
+
+    document.getElementById("resultMessage").innerText =
+    message;
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+</script>
+
+</body>
+
+</html>
